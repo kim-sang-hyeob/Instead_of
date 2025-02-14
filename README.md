@@ -28,3 +28,8 @@ fix more
 다음과 같은 경우를 이미지라고 판단하는 경향이 있음 .이미지보단 표에 가깝지 않나 싶기도 한데 
 doc yolo 에서는 정통 표만 튀급하는 것 같긴함 
 그래프를 어떻게 해석할지도 고민. 
+
+< test pdf > : 유튜브 보다가 이게 복잡한 pdf 라서 사용한다는 걸 보고 나도 이거로 사용하기로 함.
+추가로 여러가지 문서로 실험 예정.
+
+[sample.pdf](https://github.com/user-attachments/files/18793775/sample.pdf)
