@@ -3,9 +3,16 @@ import json
 from pdf2image import convert_from_path
 
 # 파일 경로 설정
-pdf_path = r"C:\Users\xpc\Desktop\CLIP.pdf"
-json_path = r"C:\Users\xpc\Desktop\annotated_images\bounding_boxes.json"
-output_pdf_path = r"C:\Users\xpc\Desktop\output\CLIP_annotated.pdf"
+pdf_path = r"C:\Users\xpc\Desktop\sample.pdf"
+json_path = r"C:\Users\xpc\Desktop\annotated_images\sample_bounding_boxes.json"
+output_pdf_path = r"C:\Users\xpc\Desktop\output\sample_annotated.pdf"
+
+
+'''
+제대로 잘 분리 되었는지 확인하기 위한 함수들. 
+결과값을 pdf 로 받는다. 
+
+'''
 
 # JSON 파일 읽기 (YOLO 결과)
 with open(json_path, "r", encoding="utf-8") as f:
@@ -129,3 +136,11 @@ for page_key, blocks in yolo_results.items():
 doc.save(output_pdf_path, garbage=4, deflate=True, clean=True)
 doc.close()
 print(f"✅ 180도 회전 + 좌우 반전이 적용된 PDF를 저장했습니다: {output_pdf_path}")
+
+
+'''
+{0: 'title', 1: 'plain text', 2: 'abandoned', 3: 'figure', 4: 'figure_caption', 5: 'table', 6: 'table_caption', 7: 'table_footnote', 8: 'isolate_formula', 9: 'formula_caption'}
+텍스트  : 0,1,4,6,7,9
+이미지 : 3 + 4(figure_caption)
+표 : 5 + 6(table_caption) + 7(table_footnote)
+'''

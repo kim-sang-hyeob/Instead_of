@@ -5,6 +5,13 @@ from doclayout_yolo import YOLOv10
 from huggingface_hub import hf_hub_download
 from PIL import Image, ImageDraw, ImageFont
 
+'''
+가장 처음 실행하는 파일. 
+pdf -> img 변환 후 yolo로 바운딩 박스 추출 -> sample_bounding_boxes.json에 저장
+
+'''
+
+
 #########################
 # 1) 모델 다운로드 및 로드
 #########################
@@ -17,7 +24,7 @@ model = YOLOv10(model_path, task="detect")
 #########################
 # 2) PDF → 이미지 변환
 #########################
-pdf_path = r"C:\Users\xpc\Desktop\CLIP.pdf"
+pdf_path = r"C:\Users\xpc\Desktop\sample.pdf"
 dpi = 300
 print(f"[INFO] PDF를 {dpi} dpi로 변환 중...")
 images = convert_from_path(pdf_path, dpi=dpi)
@@ -84,7 +91,7 @@ for page_idx, pil_img in enumerate(images):
 #########################
 # 4) JSON 결과 저장
 #########################
-json_path = os.path.join(output_dir, "bounding_boxes.json")
+json_path = os.path.join(output_dir, "sample_bounding_boxes.json")
 with open(json_path, "w", encoding="utf-8") as f:
     json.dump(results, f, indent=4)
 
